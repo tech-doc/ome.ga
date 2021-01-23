@@ -1,10 +1,21 @@
-.row {
+.row-col-3 {
   padding: 0 2rem;
   padding-bottom: 6rem;
   grid-gap: $gutter-horizontal;
   row-gap: $gutter-vertical;
   grid-template-columns: auto auto auto;
   display: grid;
-  .col-2 {
+  .col-3 {
+  }
+}
+
+.row-col-1 {
+  padding: 0 2rem;
+  padding-bottom: 3rem;
+  grid-gap: $gutter-horizontal;
+  row-gap: $gutter-vertical;
+  grid-template-columns: auto;
+  display: grid;
+  .col-1 {
   }
 }

@@ -3,9 +3,9 @@ import React from "react";
 export default function Shop({ products, onAddToCart, onAddToWishlist }) {
   return (
     <div className="dashboard">
-      <div className="row u-neg-margin-top-big">
+      <div className="row-col-3 u-neg-margin-top-big">
         {products.map((product) => (
-          <div key={product._id} className="col-2">
+          <div key={product._id} className="col-3">
             <div className="productCard">
               <img
                 src={product.picture}
