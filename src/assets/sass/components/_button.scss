@@ -6,6 +6,7 @@
   width: 100%;
   padding: 1rem 0;
   margin: 0;
+  user-select: none;
 
   &--primary {
     color: $color-white;

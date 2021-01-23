@@ -1,12 +1,14 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import logo from "../assets/img/logo_transparent_final.png";
 
-export default function Navigation({ cartsCount, wishlistCount }) {
+export default function Navigation({ cartsCount }) {
   return (
     <nav className="navigation">
+      <img src={logo} alt="" className="navigation__logo" />
       <div className="navigation__search">
         <span className="navigatoin__search-icon">
-          <i className="icofont-search"></i>
+          <i className="icofont-search-1"></i>
         </span>
         <input
           type="text"
@@ -37,22 +39,6 @@ export default function Navigation({ cartsCount, wishlistCount }) {
           </Link>
         </li>
         <div className="navigation__list-icon">
-          <li className="navigation__item-icon">
-            <Link to="#wishlist" className="navigation__link-icon">
-              <i className="icofont-list"></i>
-              <sup>
-                <span
-                  className={
-                    wishlistCount === 0
-                      ? "navigation__link-badge u-vis-hidden"
-                      : "navigation__link-badge"
-                  }
-                >
-                  {wishlistCount}
-                </span>
-              </sup>
-            </Link>
-          </li>
           <li className="navigation__item-icon">
             <Link to="/cart" className="navigation__link-icon">
               <i className="icofont-shopping-cart"></i>

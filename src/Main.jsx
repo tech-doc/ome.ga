@@ -4,6 +4,7 @@ import Navigation from "./components/Navigation";
 import Header from "./layouts/Header";
 import Cart from "./components/Cart";
 import Shop from "./components/Shop";
+import data from "./data/products";
 
 export default function Main() {
   const data = [
@@ -97,8 +98,6 @@ export default function Main() {
   const [products, setProduct] = React.useState(data);
   const [carts, setCart] = React.useState([]);
   const [cartsCount, setCartsCount] = React.useState(0);
-  const [wishlist, setWishlist] = React.useState([]);
-  const [wishlistCount, setWishlistCount] = React.useState(0);
 
   const addToCart = (data) => {
     const cartList = [...carts];
@@ -113,52 +112,48 @@ export default function Main() {
       }
     }
     setCart(cartList);
-    console.log(cartList);
     setCartsCount(cartsCount + 1);
   };
 
   const removeFromCartlist = (data) => {
     let cartList = [...carts];
-    cartList.pop(data);
-    setCart(cartList);
+    let newCartList = cartList.filter((product) => product._id !== data._id);
+    setCart(newCartList);
     setCartsCount(cartsCount - data.quantity);
   };
 
-  const addToWishlist = (data) => {
-    let wishlistProducts = wishlist;
-    if (wishlistProducts.length > 0) {
-      let product = wishlistProducts.find(
-        (product) => product._id === data._id
-      );
-      product.quantity += 1;
-      setWishlist([...wishlistProducts, product]);
-    } else {
-      data.quantity += 1;
-      setWishlist([data]);
-    }
-    setWishlistCount(wishlistCount + 1);
+  const increaseQuantity = (data) => {
+    const cartList = [...carts];
+    const index = cartList.findIndex((product) => product._id === data._id);
+    cartList[index].quantity += 1;
+    setCart(cartList);
+    setCartsCount(cartsCount + 1);
   };
 
-  const removeFromWishlist = (data) => {
-    wishlist.pop(data);
-    setWishlistCount(wishlistCount - 1);
+  const decreaseQuantity = (data) => {
+    const cartList = [...carts];
+    const index = cartList.findIndex((product) => product._id === data._id);
+    cartList[index].quantity -= 1;
+    let newCartList = cartList.filter((product) => product.quantity !== 0);
+    setCart(newCartList);
+    setCartsCount(cartsCount - 1);
   };
 
   return (
     <div>
-      <Navigation cartsCount={cartsCount} wishlistCount={wishlistCount} />
+      <Navigation cartsCount={cartsCount} />
       <Header />
       <Switch>
         <Route path="/cart">
-          {console.log(carts)}
-          <Cart cartList={carts} onRemoveFromCart={removeFromCartlist} />
+          <Cart
+            cartList={carts}
+            onQuantityPlus={increaseQuantity}
+            onQuantityMinus={decreaseQuantity}
+            onRemoveFromCart={removeFromCartlist}
+          />
         </Route>
         <Route path="/">
-          <Shop
-            products={products}
-            onAddToCart={addToCart}
-            onAddToWishlist={addToWishlist}
-          />
+          <Shop products={products} onAddToCart={addToCart} />
         </Route>
       </Switch>
     </div>

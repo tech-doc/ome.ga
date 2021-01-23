@@ -12,8 +12,8 @@
 .row-col-1 {
   padding: 0 2rem;
   padding-bottom: 3rem;
-  grid-gap: $gutter-horizontal;
-  row-gap: $gutter-vertical;
+  grid-gap: $gutter-horizontal-small;
+  row-gap: $gutter-horizontal-small;
   grid-template-columns: auto;
   display: grid;
   .col-1 {

@@ -1,4 +1,6 @@
 .cartCard {
+  background-color: $color-white;
+  border-radius: 0.3rem;
   width: 70%;
   display: grid;
   box-shadow: 1px 6px 7px 3px rgba($color-grey-dark, 0.1);
@@ -7,13 +9,38 @@
 
   &__picture {
     width: 100%;
-    height: 20rem;
+    height: 15rem;
     border-radius: 0.3rem;
     object-fit: cover;
   }
 
   &__content {
-    padding: 2rem;
+    padding: 1.5rem 2rem;
+  }
+
+  &__quantity {
+    padding: 0.3rem 0;
+    font-size: 0.9rem;
+    font-weight: 800;
+    &-icon {
+      background-color: $color-grey-light-3;
+      color: $color-grey-light-2;
+      padding: 0.3rem;
+      border-radius: 0.1rem;
+      font-size: 0.8rem;
+      cursor: pointer;
+
+      &:active {
+        background-color: $color-grey-light;
+      }
+    }
+
+    &-value {
+      width: 0.5rem;
+      padding: 0.3rem 0.4rem;
+      cursor: default;
+      user-select: none;
+    }
   }
 }
 

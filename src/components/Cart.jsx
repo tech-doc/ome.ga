@@ -1,9 +1,14 @@
 import React from "react";
 
-export default function Cart({ cartList, onRemoveFromCart }) {
+export default function Cart({
+  cartList,
+  onRemoveFromCart,
+  onQuantityPlus,
+  onQuantityMinus,
+}) {
   return (
     <div>
-      <div className="row-col-1">
+      <div className="row-col-1 u-neg-margin-top-big">
         {cartList.map((product) => (
           <div key={product._id} className="col-1">
             <div className="cartCard">
@@ -18,6 +23,30 @@ export default function Cart({ cartList, onRemoveFromCart }) {
                   <sup className="sub-unit">$</sup>
                   {product.price}
                 </h3>
+                <div className="u-margin-bottom-small">
+                  <span className="cartCard__quantity">
+                    <span
+                      onClick={() => onQuantityPlus(product)}
+                      className="cartCard__quantity-icon"
+                    >
+                      <i className="icofont-plus"></i>
+                    </span>
+
+                    <span
+                      className="cartCard__quantity-value"
+                      oncopy="return false"
+                    >
+                      {product.quantity}
+                    </span>
+                    <span
+                      onClick={() => onQuantityMinus(product)}
+                      className="cartCard__quantity-icon"
+                    >
+                      <i className="icofont-minus"></i>
+                    </span>
+                  </span>
+                </div>
+
                 <button
                   onClick={() => onRemoveFromCart(product)}
                   className="cartCard-btn btn btn--primary u-border-radius-bottom"

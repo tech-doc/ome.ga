@@ -20,13 +20,6 @@ export default function Shop({ products, onAddToCart, onAddToWishlist }) {
                 </h3>
               </div>
               <button
-                onClick={() => onAddToWishlist(product)}
-                className="btn btn--grey"
-              >
-                Add to Wishlist
-              </button>
-
-              <button
                 onClick={() => onAddToCart(product)}
                 className="btn btn--primary u-border-radius-bottom"
               >

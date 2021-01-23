@@ -4,6 +4,7 @@ body {
   margin: 0;
   font-size: 62.25%;
   font-family: "Lato", sans-serif;
+  user-select: none;
 
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
