@@ -1,0 +1,50 @@
+@import "assets/sass/abstract/variables";
+@import "assets/sass/abstract/functions";
+@import "assets/sass/abstract/mixin";
+
+@import "assets/sass/base/base";
+@import "assets/sass/base/typography";
+@import "assets/sass/base/utitlites";
+
+@import "assets/sass/components/navigation";
+@import "assets/sass/components/button";
+@import "assets/sass/components/dashboard";
+
+@import "assets/sass/layouts/grid";
+@import "assets/sass/layouts/header";
+
+.App {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+.non_phone_warning {
+  display: none;
+}
+
+@include respond(tab-port) {
+  .App {
+    display: none;
+  }
+
+  .non_phone_warning {
+    display: block;
+    padding: 15rem 0;
+    text-align: center;
+  }
+}
+
+@include respond(phone) {
+  .App {
+    display: none;
+  }
+
+  .non_phone_warning {
+    display: block;
+    padding: 15rem 0;
+    text-align: center;
+  }
+}
