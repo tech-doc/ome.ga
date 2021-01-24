@@ -1,8 +1,15 @@
-import React, { useState } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 import logo from "../assets/img/logo_transparent_final.png";
 
-export default function Navigation({ cartsCount }) {
+export default function Navigation({ carts }) {
+  const cartsCount = () => {
+    let sum = 0;
+    carts.forEach((product) => {
+      sum += product.quantity;
+    });
+    return sum;
+  };
   return (
     <nav className="navigation">
       <img src={logo} alt="" className="navigation__logo" />
@@ -40,17 +47,20 @@ export default function Navigation({ cartsCount }) {
         </li>
         <div className="navigation__list-icon">
           <li className="navigation__item-icon">
-            <Link to="/cart" className="navigation__link-icon">
+            <Link
+              to={cartsCount() === 0 ? "/" : "/cart"}
+              className="navigation__link-icon"
+            >
               <i className="icofont-shopping-cart"></i>
               <sup>
                 <span
                   className={
-                    cartsCount === 0
+                    cartsCount() === 0
                       ? "navigation__link-badge u-vis-hidden"
                       : "navigation__link-badge"
                   }
                 >
-                  {cartsCount}
+                  {cartsCount()}
                 </span>
               </sup>
             </Link>

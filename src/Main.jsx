@@ -4,7 +4,6 @@ import Navigation from "./components/Navigation";
 import Header from "./layouts/Header";
 import Cart from "./components/Cart";
 import Shop from "./components/Shop";
-import data from "./data/products";
 
 export default function Main() {
   const data = [
@@ -20,7 +19,7 @@ export default function Main() {
         "https://images.unsplash.com/photo-1557771884-709f5996687d?ixid=MXwxMjA3fDB8MHxzZWFyY2h8MjF8fHdpbnRlciUyMGZhc2hpb258ZW58MHx8MHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
       description:
         "Lorem ipsum dolor sit amet, consectetur adipisicing elit.Cumque veritatis aut laboriosam similique autem, nam,doloremque",
-      quantity: 1,
+      quantity: 0,
     },
     {
       _id: "0124",
@@ -34,7 +33,7 @@ export default function Main() {
         "https://images.unsplash.com/photo-1582041148887-67274b989ae3?ixid=MXwxMjA3fDB8MHxzZWFyY2h8NzF8fHdpbnRlciUyMGZhc2hpb258ZW58MHx8MHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
       description:
         "Lorem ipsum dolor sit amet, consectetur adipisicing elit.Cumque veritatis aut laboriosam similique autem, nam,doloremque",
-      quantity: 1,
+      quantity: 0,
     },
     {
       _id: "0125",
@@ -48,7 +47,7 @@ export default function Main() {
         "https://images.unsplash.com/photo-1610918018886-598a97d83386?ixid=MXwxMjA3fDB8MHxzZWFyY2h8NTB8fHdpbnRlciUyMGZhc2hpb258ZW58MHx8MHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
       description:
         "Lorem ipsum dolor sit amet, consectetur adipisicing elit.Cumque veritatis aut laboriosam similique autem, nam,doloremque",
-      quantity: 1,
+      quantity: 0,
     },
     {
       _id: "0126",
@@ -62,7 +61,7 @@ export default function Main() {
         "https://images.unsplash.com/photo-1604947051230-fc2bc6f6c5c9?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=368&q=80",
       description:
         "Lorem ipsum dolor sit amet, consectetur adipisicing elit.Cumque veritatis aut laboriosam similique autem, nam,doloremque",
-      quantity: 1,
+      quantity: 0,
     },
     {
       _id: "0127",
@@ -76,7 +75,7 @@ export default function Main() {
         "https://images.unsplash.com/flagged/photo-1559502867-c406bd78ff24?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=332&q=80",
       description:
         "Lorem ipsum dolor sit amet, consectetur adipisicing elit.Cumque veritatis aut laboriosam similique autem, nam,doloremque",
-      quantity: 1,
+      quantity: 0,
     },
 
     {
@@ -91,11 +90,11 @@ export default function Main() {
         "https://images.unsplash.com/photo-1559582798-678dfc71ccd8?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=80",
       description:
         "Lorem ipsum dolor sit amet, consectetur adipisicing elit.Cumque veritatis aut laboriosam similique autem, nam,doloremque",
-      quantity: 1,
+      quantity: 0,
     },
   ];
 
-  const [products, setProduct] = React.useState(data);
+  const [products] = React.useState(data);
   const [carts, setCart] = React.useState([]);
   const [cartsCount, setCartsCount] = React.useState(0);
 
@@ -103,9 +102,11 @@ export default function Main() {
     const cartList = [...carts];
     const index = cartList.findIndex((product) => product._id === data._id);
     if (cartList.length === 0) {
+      data.quantity += 1;
       cartList.push(data);
     } else {
       if (index === -1) {
+        data.quantity += 1;
         cartList.push(data);
       } else {
         cartList[index].quantity += 1;
@@ -141,7 +142,7 @@ export default function Main() {
 
   return (
     <div>
-      <Navigation cartsCount={cartsCount} />
+      <Navigation carts={carts} cartsCount={cartsCount} />
       <Header />
       <Switch>
         <Route path="/cart">

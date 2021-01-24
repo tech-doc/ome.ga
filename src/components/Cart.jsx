@@ -32,10 +32,7 @@ export default function Cart({
                       <i className="icofont-plus"></i>
                     </span>
 
-                    <span
-                      className="cartCard__quantity-value"
-                      oncopy="return false"
-                    >
+                    <span className="cartCard__quantity-value">
                       {product.quantity}
                     </span>
                     <span
