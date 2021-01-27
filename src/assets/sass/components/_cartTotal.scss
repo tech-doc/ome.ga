@@ -1,0 +1,42 @@
+.cartTotal {
+  max-width: 100%;
+  border-radius: $border-radius;
+  background-color: $color-white;
+  padding: 3rem 1.5rem;
+
+  @include respond(tab-port) {
+    // max-width: 40rem;
+  }
+  @include respond(phone) {
+    max-width: 100%;
+  }
+
+  &__content {
+    text-transform: uppercase;
+    max-width: 100%;
+    font-size: 1.4rem;
+    font-weight: 400;
+    display: grid;
+    grid-template-columns: auto auto;
+
+    &-bold {
+      font-weight: 800;
+      letter-spacing: 0.1rem;
+    }
+
+    &-light {
+      letter-spacing: 0.4rem;
+    }
+
+    @include respond(tab-port) {
+      font-size: 1rem;
+      display: grid;
+      row-gap: 1rem;
+      grid-template-columns: auto;
+    }
+
+    @include respond(phone) {
+      grid-template-columns: auto auto;
+    }
+  }
+}

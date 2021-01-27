@@ -1,20 +1,67 @@
 .row-col-3 {
-  padding: 0 2rem;
+  max-width: 100%;
   padding-bottom: 6rem;
-  grid-gap: $gutter-horizontal;
+  grid-gap: $gutter-vertical-phone;
+  row-gap: $gutter-horizontal-phone;
   grid-template-columns: auto auto auto;
   display: grid;
-  .col-3 {
+
+  // .col-3 {
+  //   margin: 0 auto;
+  // }
+
+  @include respond(tab-port) {
+    padding-bottom: 6rem;
+    max-width: 100%;
+    grid-gap: $gutter-vertical-phone;
+    row-gap: $gutter-horizontal-phone;
+    grid-template-columns: auto auto;
+    display: grid;
+  }
+
+  @include respond(phone) {
+    width: 100%;
+    padding-bottom: 6rem;
+    grid-gap: $gutter-horizontal-phone;
+    grid-template-columns: auto;
+    display: grid;
   }
 }
 
 .row-col-1 {
+  grid-gap: $gutter-horizontal-small;
+  grid-template-columns: auto;
+  display: grid;
+  max-width: 100%;
+  .col-1 {
+    max-width: 100%;
+  }
+
+  @include respond(phone) {
+  }
+}
+
+.row-col-2-1 {
+  max-width: 100%;
   padding: 0 2rem;
   padding-bottom: 3rem;
   grid-gap: $gutter-horizontal-small;
-  row-gap: $gutter-horizontal-small;
-  grid-template-columns: auto;
+  row-gap: $gutter-horizontal;
+  grid-template-columns: 60% 35%;
   display: grid;
-  .col-1 {
+
+  @include respond(phone) {
+    grid-template-columns: auto;
+    display: grid;
+    grid-gap: $gutter-vertical-phone;
+    row-gap: $gutter-horizontal-phone;
+
+    .col-first {
+      grid-row: 1;
+    }
+
+    .col-second {
+      grid-row: 2;
+    }
   }
 }

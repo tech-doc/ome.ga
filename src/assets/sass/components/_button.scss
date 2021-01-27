@@ -1,18 +1,29 @@
 .btn {
-  font-size: 1rem;
-  font-weight: 800;
-  cursor: pointer;
-  border: none;
-  width: 100%;
-  padding: 1rem 0;
-  margin: 0;
-  border-radius: 0.3rem;
-  user-select: none;
+  &,
+  &:link,
+  &:visited {
+    max-width: 90%;
+    font-size: 1rem;
+    font-weight: 800;
+    cursor: pointer;
+    border: none;
+    padding: 1rem 2rem;
+    border-radius: 0.3rem;
+    user-select: none;
+    text-transform: uppercase;
+
+    @include respond(phone) {
+      font-size: 0.8rem;
+    }
+  }
 
   &--primary {
     color: $color-white;
     background-color: $color-primary;
     box-shadow: 1px 6px 7px 3px rgba($color-grey-dark, 0.1);
+    &:active {
+      box-shadow: none;
+    }
   }
 
   &--grey {
@@ -24,8 +35,5 @@
   &:focus {
     border: none;
     outline: none;
-  }
-
-  &:active {
   }
 }

@@ -1,9 +1,16 @@
 import React from "react";
+import Search from "./common/Search";
 
-export default function Shop({ products, onAddToCart, onAddToWishlist }) {
+export default function Shop({
+  products,
+  onAddToCart,
+  onAddToWishlist,
+  onSearch,
+}) {
   return (
     <div className="dashboard">
-      <div className="row-col-3 u-neg-margin-top-big">
+      <Search onSearch={onSearch} />
+      <div className="row-col-3 u-margin-top-small">
         {products.map((product) => (
           <div key={product._id} className="col-3">
             <div className="productCard">
@@ -19,12 +26,14 @@ export default function Shop({ products, onAddToCart, onAddToWishlist }) {
                   {product.price}
                 </h3>
               </div>
-              <button
-                onClick={() => onAddToCart(product)}
-                className="btn btn--primary u-border-radius-bottom"
-              >
-                Add to Cart
-              </button>
+              <div className="productCard__btn u-text-center">
+                <a
+                  onClick={() => onAddToCart(product)}
+                  className="btn btn--primary u-border-radius-bottom"
+                >
+                  Add to Cart
+                </a>
+              </div>
             </div>
           </div>
         ))}

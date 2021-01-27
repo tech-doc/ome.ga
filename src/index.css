@@ -5,6 +5,8 @@ body {
   font-size: 62.25%;
   font-family: "Lato", sans-serif;
   user-select: none;
+  overflow-x: hidden;
+  background-color: #f6f6f6;
 
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;

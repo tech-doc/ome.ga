@@ -1,15 +1,17 @@
-@import "assets/sass/abstract/variables";
 @import "assets/sass/abstract/functions";
 @import "assets/sass/abstract/mixin";
+@import "assets/sass/abstract/variables";
 
 @import "assets/sass/base/base";
 @import "assets/sass/base/typography";
 @import "assets/sass/base/utitlites";
 
 @import "assets/sass/components/navigation";
+@import "assets/sass/components/navSearch";
 @import "assets/sass/components/button";
 @import "assets/sass/components/dashboard";
 @import "assets/sass/components/cart";
+@import "assets/sass/components/cartTotal";
 
 @import "assets/sass/layouts/grid";
 @import "assets/sass/layouts/header";
@@ -20,32 +22,5 @@
 
   &::-webkit-scrollbar {
     display: none;
-  }
-}
-.non_phone_warning {
-  display: none;
-}
-
-@include respond(tab-port) {
-  .App {
-    display: none;
-  }
-
-  .non_phone_warning {
-    display: block;
-    padding: 15rem 0;
-    text-align: center;
-  }
-}
-
-@include respond(phone) {
-  .App {
-    display: none;
-  }
-
-  .non_phone_warning {
-    display: block;
-    padding: 15rem 0;
-    text-align: center;
   }
 }

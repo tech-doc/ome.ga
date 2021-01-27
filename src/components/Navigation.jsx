@@ -1,8 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import logo from "../assets/img/logo_transparent_final.png";
 
-export default function Navigation({ carts }) {
+export default function Navigation({ carts, searchValue, onSearch }) {
+  const [isNavigation, setNavigation] = useState(false);
+
   const cartsCount = () => {
     let sum = 0;
     carts.forEach((product) => {
@@ -12,41 +13,82 @@ export default function Navigation({ carts }) {
   };
   return (
     <nav className="navigation">
-      <img src={logo} alt="" className="navigation__logo" />
-      <div className="navigation__search">
-        <span className="navigatoin__search-icon">
-          <i className="icofont-search-1"></i>
-        </span>
-        <input
-          type="text"
-          name="search"
-          placeholder="Search Product"
-          className="navigation__search-input"
-        />
-      </div>
-      <ul className="navigation__list">
-        <li className="navigation__item">
+      <a
+        onClick={() => setNavigation(!isNavigation)}
+        className="navigation__btn"
+      ></a>
+      {/* <img src={logo} alt="" className="navigation__logo" /> */}
+      <ul
+        className={
+          isNavigation
+            ? "navigation__list"
+            : "navigation__list navigation__list-hidden"
+        }
+      >
+        <li
+          className={
+            isNavigation
+              ? "navigation__item"
+              : "navigation__item navigation__item-hidden"
+          }
+        >
           <Link to="/" className="navigation__link">
             Shop
           </Link>
         </li>
-        <li className="navigation__item">
+        <li
+          className={
+            isNavigation
+              ? "navigation__item"
+              : "navigation__item navigation__item-hidden"
+          }
+        >
           <Link to="/" className="navigation__link">
             Men
           </Link>
         </li>
-        <li className="navigation__item">
+        <li
+          className={
+            isNavigation
+              ? "navigation__item"
+              : "navigation__item navigation__item-hidden"
+          }
+        >
           <Link to="/" className="navigation__link">
             women
           </Link>
         </li>
-        <li className="navigation__item">
+        <li
+          className={
+            isNavigation
+              ? "navigation__item"
+              : "navigation__item navigation__item-hidden"
+          }
+        >
           <Link to="/" className="navigation__link">
             kid
           </Link>
         </li>
         <div className="navigation__list-icon">
-          <li className="navigation__item-icon">
+          <li
+            className={
+              isNavigation
+                ? "navigation__item-icon"
+                : "navigation__item-icon navigation__item-icon-hidden"
+            }
+          >
+            <Link to="/add-product" className="navigation__link-icon">
+              <i className="icofont-plus-circle"></i>
+            </Link>
+          </li>
+
+          <li
+            className={
+              isNavigation
+                ? "navigation__item-icon"
+                : "navigation__item-icon navigation__item-icon-hidden"
+            }
+          >
             <Link
               to={cartsCount() === 0 ? "/" : "/cart"}
               className="navigation__link-icon"
