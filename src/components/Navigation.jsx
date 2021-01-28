@@ -13,10 +13,10 @@ export default function Navigation({ carts, searchValue, onSearch }) {
   };
   return (
     <nav className="navigation">
-      <a
+      <button
         onClick={() => setNavigation(!isNavigation)}
         className="navigation__btn"
-      ></a>
+      ></button>
       {/* <img src={logo} alt="" className="navigation__logo" /> */}
       <ul
         className={

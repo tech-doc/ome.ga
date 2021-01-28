@@ -2,13 +2,13 @@
   &__search {
     max-width: 22rem;
     border-radius: 0.3rem;
-    background-color: $color-white;
+    background-color: $color-grey-light;
     color: $color-grey-light-2;
     padding-left: 0.5rem;
 
     &-icon {
       font-size: 1rem;
-      background-color: $color-white;
+      background-color: $color-grey-light;
     }
 
     &-input {
@@ -16,7 +16,7 @@
       width: 17rem;
       border-radius: 0.3rem;
       border: none;
-      background-color: $color-white;
+      background-color: $color-grey-light;
       color: $color-grey-dark;
       padding: 0.9rem;
 

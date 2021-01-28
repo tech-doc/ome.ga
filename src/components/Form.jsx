@@ -1,49 +1,17 @@
 import React from "react";
-import firebaseInit from "../services/firebaseSetup";
-import productSchema from "../models/Product";
+// import productSchema from "../models/Product";
 
-export default function Form({ onSubmit }) {
-  const [product, setProduct] = React.useState(productSchema);
-
-  const handleChange = (event) => {
-    const productDetails = { ...product };
-    event.persist();
-    const date = new Date();
-    const _id =
-      Math.random().toString(36).substring(7) + date.getTime().toString();
-    Object.assign(productDetails, {
-      _id: `_${_id}`,
-      [event.target.name]: event.target.value,
-    });
-
-    setProduct({ ...productDetails });
-  };
-
-  const handleSubmit = (event) => {
-    let ref = firebaseInit.database().ref("products").child("product");
-    ref.set(product);
-    console.log("Successfull");
-    event.preventDefault();
-  };
-
-  // const getProducts = (event) => {
-  //   let data;
-  //   let ref = firebaseInit.database().ref("products").child("product");
-  //   ref.once("value", (snapshot) => {
-  //     data = snapshot.val();
-  //   });
-  //   return data;
-  // };
+export default function Form({ onSubmit, onChange, onImg }) {
+  // const [product, setProduct] = React.useState(productSchema);
 
   return (
     <div>
-      {/* {console.log(`data : ${getProducts()}`)} */}
-      <form onSubmit={handleSubmit} className="form">
+      <form action="/" onSubmit={onSubmit} className="form">
         <div className="form__group">
           <input
             type="text"
-            value={product.title}
-            onChange={handleChange}
+            // value={product.title}
+            onChange={(e) => onChange(e)}
             name="title"
             className="form__input-group"
           />
@@ -51,8 +19,8 @@ export default function Form({ onSubmit }) {
         <div className="form__group">
           <input
             type="text"
-            value={product.price}
-            onChange={handleChange}
+            // value={product.price}
+            onChange={(e) => onChange(e)}
             name="price"
             className="form__input-group"
           />
@@ -60,8 +28,8 @@ export default function Form({ onSubmit }) {
         <div className="form__group">
           <input
             type="text"
-            value={product.desciption}
-            onChange={handleChange}
+            // value={product.desciption}
+            onChange={(e) => onChange(e)}
             name="description"
             className="form__input-group"
           />
@@ -69,8 +37,8 @@ export default function Form({ onSubmit }) {
         <div className="form__group">
           <input
             type="file"
-            value={product.picture}
-            onChange={handleChange}
+            // value={product.picture}
+            onChange={(e) => onImg(e)}
             name="picture"
             className="form__input-group"
           />
